@@ -29,6 +29,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'styles.css'  
         }),
+        new MiniCssExtractPlugin({
+          filename: 'Grid.css'  
+        }),
         new CopyPlugin([
             {
               from: 'node_modules/normalize.css/normalize.css',

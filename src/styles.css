@@ -12,3 +12,14 @@ html {
     font-size: 20px;
     text-rendering: optimizeLegibility;
 }
+
+.row {
+    max-width: 1140px;
+
+    /*top right bottom left*/
+    /*margin: 0 auto 0 auto;*/
+
+    /*To center the element*/
+    /*top,bottom = 0 & right,left = auto*/
+    margin: 0 auto;
+}
