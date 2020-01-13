@@ -1,3 +1,11 @@
+/*
+    Orange color: #e67e22
+
+*/
+
+/* --------------------------------------------------------------- 
+BASIC SETUP
+---------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +21,9 @@ html {
     text-rendering: optimizeLegibility;
 }
 
+/* --------------------------------------------------------------- 
+REUSABLE COMPONENTS
+---------------------------------------------------------------- */
 .row {
     max-width: 1140px;
 
@@ -22,4 +33,150 @@ html {
     /*To center the element*/
     /*top,bottom = 0 & right,left = auto*/
     margin: 0 auto;
+}
+
+/* --------- HEADINGS --------*/
+h1 {
+    margin: 0;
+    color: #fff;
+    /*Relative to the parent element, in this case <html> tag, so, font-size: 40px*/
+    font-size: 240%;
+
+    /*Big should decrease font weight for very big font headlines*/
+    font-weight: 300;
+
+    /*h1 element always has default margin*/
+    margin-top: 0px;
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+/* --------- BUTTONS --------*/
+
+/*Common botons styles
+    .btn:link: normal <a> element style
+    .btn:visited: visited <a> element style
+*/
+.btn:link,
+.btn:visited {
+    /*
+    display: inline-block:
+        Difference from inline: inline-block respects element width and height, top and bottom margins
+        Difference from block: inline-block does not add a line break
+    */
+    display: inline-block;
+
+    /*padding: top&bottom=10px & left&right=30px */
+    padding: 10px 30px;
+
+    font-weight: 300;
+
+    /*Remove text underline from <a> element*/
+    text-decoration: none;
+
+    /*Btn rounded corners*/
+    border-radius: 200px;
+
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited {
+    background-color: #e67e22;
+
+    color: #fff;
+
+    /*
+        According to box-model:
+            We need to set border to this botton to make it equal in height to the btn-ghost button.    
+    */
+    border: 1px solid #e67e22;   
+    
+    margin-right: 15px;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+/*Cascade, must to be bellow from .btn-full, because .btn-full has its own background-color*/
+.btn:hover,
+.btn:active {
+    background-color: #BD681C;
+    border-color:  #BD681C;
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    color: #fff;
+}
+
+/* --------------------------------------------------------------- 
+HEADER
+---------------------------------------------------------------- */
+header {
+    
+    /*
+        Image with black gradient in background
+        linear-gradient: from black to black with transparency
+        background-size: Render the entire image
+        background-position: Image centered
+    */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+
+    height: 100vh;
+}
+
+.hero-text-box {
+    
+    /*Center hero-text-box vertically*/    
+    position: absolute;
+    top: 50%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+    width: 1140px;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+
+    /*padding: top bottom left right*/
+    padding: 8px 0;
+
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
 }

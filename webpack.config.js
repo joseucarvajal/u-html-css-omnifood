@@ -20,23 +20,30 @@ module.exports = {
       rules: [
         {
           test: /\.css$/i,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          use: [
+            MiniCssExtractPlugin.loader, 
+            {
+              loader: 'css-loader',
+              options: {
+                url: false,
+              }
+            },
+          ]
         },
       ],
     },
 
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'styles.css'  
-        }),
-        new MiniCssExtractPlugin({
-          filename: 'Grid.css'  
+          filename: 'styles.css'  
         }),
         new CopyPlugin([
             {
               from: 'node_modules/normalize.css/normalize.css',
               to: '[path]/normalize.css'
-            }
+            },
+            { from: './src/Grid.css', to: 'Grid.css' },
+            { from: './src/img', to: 'img' }
         ])
     ]    
   };
