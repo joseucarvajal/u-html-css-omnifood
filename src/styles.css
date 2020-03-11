@@ -1,5 +1,6 @@
 /*
     Orange color: #e67e22
+    Orange active: #BD681C
 
 */
 
@@ -21,6 +22,16 @@ html {
     text-rendering: optimizeLegibility;
 }
 
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
 /* --------------------------------------------------------------- 
 REUSABLE COMPONENTS
 ---------------------------------------------------------------- */
@@ -31,27 +42,96 @@ REUSABLE COMPONENTS
     /*margin: 0 auto 0 auto;*/
 
     /*To center the element*/
-    /*top,bottom = 0 & right,left = auto*/
+    /*top-bottom = 0 & left-right = auto*/
     margin: 0 auto;
 }
 
-/* --------- HEADINGS --------*/
-h1 {
-    margin: 0;
-    color: #fff;
-    /*Relative to the parent element, in this case <html> tag, so, font-size: 40px*/
-    font-size: 240%;
 
-    /*Big should decrease font weight for very big font headlines*/
+section {
+    /*Padding and NO margin, because we need to preserve to background color*/
+    /*top-bottom & left-right*/    
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1%;
+}
+
+/* --------- HEADINGS --------*/
+h1,
+h2,
+h3 {
+    /*Big headlines fonts should decrease font weight, by default h1 has higher weight */
     font-weight: 300;
 
-    /*h1 element always has default margin*/
-    margin-top: 0px;
-    margin-bottom: 20px;
-
     text-transform: uppercase;
-    letter-spacing: 1px;
+}
+h1 {
+    /*h1 element always has default margin*/
+    margin: 0;    
+    margin-bottom: 20px;
+    color: #fff;
+
+    /*Relative to the parent element, in this case <html> tag, so, font-size: 40px*/
+    font-size: 240%;
     word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    font-size: 180%;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/*Insert some text after selected elements*/
+/*Yellow line between h2 and text*/
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+
+    /*We need to specify content, but we dont't want any words to appear*/
+    content: " ";
+    width: 100px;
+
+    /*Center the line after H2 heading*/
+    /*Shortand 2 properties:
+        top-bottom & left-rigth*/
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+/* --------- PARAGRAPHS --------*/
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/* --------- ICONS --------*/
+.icon-big {
+    font-size: 350%;
+
+    /*To force line break*/
+    display: block;
+
+    color: #e67e22;
+
+    margin-bottom: 10px;
 }
 
 /* --------- BUTTONS --------*/
@@ -80,6 +160,7 @@ h1 {
     /*Btn rounded corners*/
     border-radius: 200px;
 
+    /*When these properties change, animation transition is executed*/
     transition: background-color 0.2s, border 0.2s, color 0.2s;
 }
 
@@ -91,7 +172,8 @@ h1 {
 
     /*
         According to box-model:
-            We need to set border to this botton to make it equal in height to the btn-ghost button.    
+            We need to set border to this botton to make it equal in height to the btn-ghost button, because it
+            already has border   
     */
     border: 1px solid #e67e22;   
     
@@ -104,7 +186,7 @@ h1 {
     color: #e67e22;
 }
 
-/*Cascade, must to be bellow from .btn-full, because .btn-full has its own background-color*/
+/*Cascade, must be bellow of .btn-full, because .btn-full has its own background-color*/
 .btn:hover,
 .btn:active {
     background-color: #BD681C;
@@ -123,7 +205,7 @@ header {
     
     /*
         Image with black gradient in background
-        linear-gradient: from black to black with transparency
+        linear-gradient: from black to black with 70% of transparency
         background-size: Render the entire image
         background-position: Image centered
     */
@@ -165,7 +247,7 @@ header {
 .main-nav li a:link,
 .main-nav li a:visited {
 
-    /*padding: top bottom left right*/
+    /*padding: top&bottom & left&right*/
     padding: 8px 0;
 
     color: white;
@@ -179,4 +261,117 @@ header {
 .main-nav li a:hover,
 .main-nav li a:active {
     border-bottom: 2px solid #e67e22;
+}
+
+/* --------------------------------------------------------------- 
+FEATURES
+---------------------------------------------------------------- */
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
+
+/* --------------------------------------------------------------- 
+MEALS -SECTION
+---------------------------------------------------------------- */
+
+.section-meals{
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    width: 100%;
+
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.meal-photo {
+    /*Exact width of its parent (li)*/
+    width: 100%;
+
+    /*It property was already set, but is defined in normalize.css, so we need to specify this property*/
+    margin:0;
+
+    /*Avoid images overflow that causes these images go out the browser, and causes horizontal scroll*/
+    overflow: hidden;
+
+    /*Make image darker and opaque + this property + img opacity*/
+    background-color: #000;
+}
+
+.meal-photo img {
+    width: 100%;
+    height: auto;
+
+    /*Make image bigger*/
+    transform: scale(1.15);
+    
+    /*Animate image: opacity and size*/
+    transition: transform 0.5s, opacity 0.5s;
+
+    opacity: 0.7;
+}
+
+.meal-photo img:hover {
+
+    /*Animate image: opacity and size*/
+    opacity: 1.0;
+    transform: scale(1.03);
+}
+
+/* --------------------------------------------------------------- 
+HOW IT WORKS -SECTION
+---------------------------------------------------------------- */
+
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+.steps-box:first-child {
+    text-align: right;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child{
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: inline-block;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;    
 }

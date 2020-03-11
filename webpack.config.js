@@ -40,10 +40,18 @@ module.exports = {
         new CopyPlugin([
             {
               from: 'node_modules/normalize.css/normalize.css',
-              to: '[path]/normalize.css'
+              to: 'normalize.css'
             },
             { from: './src/Grid.css', to: 'Grid.css' },
-            { from: './src/img', to: 'img' }
+            { from: './src/img', to: 'img' },
+            {
+              from: './src/vendors/css/',
+              to: 'vendors/css'
+            },
+            {
+              from: './src/vendors/fonts',
+              to: 'vendors/fonts'
+            }
         ])
     ]    
   };
